@@ -1,34 +1,21 @@
 <h1>Sign Up</h1>
-<%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-    <div>
-      <%= pluralize(@user.errors.count, "error") %> prevented the account from being created:
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_tag users_path do %>
   <div>
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= label_tag :firstname %><br/>
+    <%= text_field_tag "user[firstname]" %>
+  </div>  
+  <div>
+    <%= label_tag :lastname %><br/>
+    <%= text_field_tag "user[lastname]" %>
+  </div>
+
+  <div>
+    <%= label_tag :email %><br/>
+    <%= text_field_tag "user[email]" %>
   </div>
   <div>
-    <%= f.label :firstname, "First Name" %><br>
-    <%= f.text_field :firstname %>
+    <%= label_tag :password %><br/>
+    <%= password_field_tag "user[password]" %>
   </div>
-  <div>
-    <%= f.label :lastname, "Last Name" %><br>
-    <%= f.text_field :lastname %>
-  </div>
-  <div>
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </div>
-  <div>
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div><%= f.submit "Submit" %></div>
+  <div><%= submit_tag "Sign Up" %></div>
 <% end %>
