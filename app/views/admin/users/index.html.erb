@@ -1,5 +1,7 @@
 <h1>All Users</h1>
 
+<%= paginate @users %>
+
 <% @users.each do |user| %>
-  <p><%= user.full_name %></p>
+    <h2><%= link_to user.full_name, admin_user_path(user) %></h2>
 <% end %>
