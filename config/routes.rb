@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   resources :movies do
     resources :reviews, only: [:new, :create]
+    collection do
+      get 'new_search'
+      get 'search_results'
+    end
   end
   
   resources :users, only: [:new, :create]

@@ -42,6 +42,21 @@ class MoviesController < ApplicationController
     redirect_to movies_path
   end
 
+  def new_search
+    # show search form
+    render :search_form
+  end
+
+  def search_results
+    # use params from form submit to find movies
+    @movies = Movie.where("title like :title AND director like :director", {title: params[:title], director: params[:director]})
+    @movies = @movies.where("runtime_in_minutes < ? ", 90) if params[:runtime_in_minutes] == "<90"
+    @movies = @movies.where("runtime_in_minutes >= ? AND runtime_in_minutes <= ? ", 90, 120) if params[:runtime_in_minutes] == "between"
+    @movies = @movies.where("runtime_in_minutes > ? ", 120) if params[:runtime_in_minutes] == ">120"    
+    # show movies
+    render :results
+  end
+
   protected
 
   def movie_params
