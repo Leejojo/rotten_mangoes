@@ -1,0 +1,24 @@
+<%= form_for [:admin, @user] do |f| %>
+  <div>
+    <%= f.label :firstname %><br>
+    <%= f.text_field :firstname %>
+  </div>  
+  <div>
+    <%= f.label :lastname %><br>
+    <%= f.text_field :lastname %>
+  </div>
+
+  <div>
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div>
+  <div>
+    <%= f.check_box :admin %> Admin 
+
+  </div>
+  <div><%= submit_tag "Set Changes" %></div>
+<% end %>
